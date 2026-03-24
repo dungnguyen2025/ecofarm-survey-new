@@ -225,16 +225,6 @@
             display: none;
         }
 
-        .error-message {
-            background: #f8d7da;
-            border: 2px solid #dc3545;
-            color: #721c24;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 10px 0;
-            display: none;
-        }
-
         @media (max-width: 768px) {
             .container {
                 margin: 10px;
@@ -269,8 +259,6 @@
         <div class="progress-bar">
             <div class="progress-fill" id="progressFill"></div>
         </div>
-
-        <div class="error-message" id="errorMessage"></div>
 
         <div class="success-message" id="successMessage">
             <h3>🎉 Cảm ơn bạn đã hoàn thành khảo sát!</h3>
@@ -336,19 +324,19 @@
                 <p style="margin-bottom: 15px; color: #856404;">Chọn 1 lĩnh vực bạn quan tâm nhất. Bạn sẽ chỉ trả lời câu hỏi về lĩnh vực này.</p>
                 <div class="radio-group">
                     <div class="radio-item" onclick="selectGroup('agriculture')">
-                        <input type="radio" id="group1" name="interestedGroup" value="agriculture">
+                        <input type="radio" id="group1" name="interestedGroup" value="agriculture" required>
                         <label for="group1">🌾 Nông nghiệp truyền thống</label>
                     </div>
                     <div class="radio-item" onclick="selectGroup('bamboo')">
-                        <input type="radio" id="group2" name="interestedGroup" value="bamboo">
+                        <input type="radio" id="group2" name="interestedGroup" value="bamboo" required>
                         <label for="group2">🎋 Tre và cây dược liệu</label>
                     </div>
                     <div class="radio-item" onclick="selectGroup('wellness')">
-                        <input type="radio" id="group3" name="interestedGroup" value="wellness">
+                        <input type="radio" id="group3" name="interestedGroup" value="wellness" required>
                         <label for="group3">💚 Sản phẩm Wellness</label>
                     </div>
                     <div class="radio-item" onclick="selectGroup('gacp')">
-                        <input type="radio" id="group4" name="interestedGroup" value="gacp">
+                        <input type="radio" id="group4" name="interestedGroup" value="gacp" required>
                         <label for="group4">🏆 Chứng nhận GACP</label>
                     </div>
                 </div>
@@ -363,19 +351,19 @@
                     <label>Bạn có tham gia hoạt động nông nghiệp không? <span class="required">*</span></label>
                     <div class="radio-group">
                         <div class="radio-item">
-                            <input type="radio" id="agri1" name="agricultureParticipation" value="main" required>
+                            <input type="radio" id="agri1" name="agricultureParticipation" value="main">
                             <label for="agri1">Có, là nghề chính</label>
                         </div>
                         <div class="radio-item">
-                            <input type="radio" id="agri2" name="agricultureParticipation" value="side" required>
+                            <input type="radio" id="agri2" name="agricultureParticipation" value="side">
                             <label for="agri2">Có, là nghề phụ</label>
                         </div>
                         <div class="radio-item">
-                            <input type="radio" id="agri3" name="agricultureParticipation" value="hobby" required>
+                            <input type="radio" id="agri3" name="agricultureParticipation" value="hobby">
                             <label for="agri3">Có, như sở thích</label>
                         </div>
                         <div class="radio-item">
-                            <input type="radio" id="agri4" name="agricultureParticipation" value="no" required>
+                            <input type="radio" id="agri4" name="agricultureParticipation" value="no">
                             <label for="agri4">Không</label>
                         </div>
                     </div>
@@ -385,27 +373,27 @@
                     <label>Diện tích đất nông nghiệp bạn đang sử dụng? <span class="required">*</span></label>
                     <div class="radio-group">
                         <div class="radio-item">
-                            <input type="radio" id="land1" name="landArea" value="<1000" required>
+                            <input type="radio" id="land1" name="landArea" value="<1000">
                             <label for="land1">Dưới 1000m²</label>
                         </div>
                         <div class="radio-item">
-                            <input type="radio" id="land2" name="landArea" value="1000-5000" required>
+                            <input type="radio" id="land2" name="landArea" value="1000-5000">
                             <label for="land2">1000-5000m²</label>
                         </div>
                         <div class="radio-item">
-                            <input type="radio" id="land3" name="landArea" value="5000-10000" required>
+                            <input type="radio" id="land3" name="landArea" value="5000-10000">
                             <label for="land3">5000m²-1ha</label>
                         </div>
                         <div class="radio-item">
-                            <input type="radio" id="land4" name="landArea" value="1-5ha" required>
+                            <input type="radio" id="land4" name="landArea" value="1-5ha">
                             <label for="land4">1-5ha</label>
                         </div>
                         <div class="radio-item">
-                            <input type="radio" id="land5" name="landArea" value=">5ha" required>
+                            <input type="radio" id="land5" name="landArea" value=">5ha">
                             <label for="land5">Trên 5ha</label>
                         </div>
                         <div class="radio-item">
-                            <input type="radio" id="land6" name="landArea" value="none" required>
+                            <input type="radio" id="land6" name="landArea" value="none">
                             <label for="land6">Không có</label>
                         </div>
                     </div>
@@ -445,23 +433,23 @@
                     <label>Bạn có áp dụng phương pháp nông nghiệp hữu cơ không? <span class="required">*</span></label>
                     <div class="radio-group">
                         <div class="radio-item">
-                            <input type="radio" id="organic1" name="organicFarming" value="fully" required>
+                            <input type="radio" id="organic1" name="organicFarming" value="fully">
                             <label for="organic1">Có, hoàn toàn hữu cơ</label>
                         </div>
                         <div class="radio-item">
-                            <input type="radio" id="organic2" name="organicFarming" value="partially" required>
+                            <input type="radio" id="organic2" name="organicFarming" value="partially">
                             <label for="organic2">Có, một phần</label>
                         </div>
                         <div class="radio-item">
-                            <input type="radio" id="organic3" name="organicFarming" value="transitioning" required>
+                            <input type="radio" id="organic3" name="organicFarming" value="transitioning">
                             <label for="organic3">Đang chuyển đổi</label>
                         </div>
                         <div class="radio-item">
-                            <input type="radio" id="organic4" name="organicFarming" value="no" required>
+                            <input type="radio" id="organic4" name="organicFarming" value="no">
                             <label for="organic4">Không</label>
                         </div>
                         <div class="radio-item">
-                            <input type="radio" id="organic5" name="organicFarming" value="unclear" required>
+                            <input type="radio" id="organic5" name="organicFarming" value="unclear">
                             <label for="organic5">Chưa hiểu rõ</label>
                         </div>
                     </div>
@@ -482,19 +470,19 @@
                     <label>Bạn có trồng tre không? <span class="required">*</span></label>
                     <div class="radio-group">
                         <div class="radio-item">
-                            <input type="radio" id="bamboo1" name="bambooGrowing" value="large" required>
+                            <input type="radio" id="bamboo1" name="bambooGrowing" value="large">
                             <label for="bamboo1">Có, quy mô lớn</label>
                         </div>
                         <div class="radio-item">
-                            <input type="radio" id="bamboo2" name="bambooGrowing" value="small" required>
+                            <input type="radio" id="bamboo2" name="bambooGrowing" value="small">
                             <label for="bamboo2">Có, quy mô nhỏ</label>
                         </div>
                         <div class="radio-item">
-                            <input type="radio" id="bamboo3" name="bambooGrowing" value="planning" required>
+                            <input type="radio" id="bamboo3" name="bambooGrowing" value="planning">
                             <label for="bamboo3">Có kế hoạch trồng</label>
                         </div>
                         <div class="radio-item">
-                            <input type="radio" id="bamboo4" name="bambooGrowing" value="not_interested" required>
+                            <input type="radio" id="bamboo4" name="bambooGrowing" value="not_interested">
                             <label for="bamboo4">Không quan tâm</label>
                         </div>
                     </div>
@@ -534,19 +522,19 @@
                     <label>Bạn có trồng cây dược liệu không? <span class="required">*</span></label>
                     <div class="radio-group">
                         <div class="radio-item">
-                            <input type="radio" id="herb1" name="herbGrowing" value="many" required>
+                            <input type="radio" id="herb1" name="herbGrowing" value="many">
                             <label for="herb1">Có, nhiều loại</label>
                         </div>
                         <div class="radio-item">
-                            <input type="radio" id="herb2" name="herbGrowing" value="few" required>
+                            <input type="radio" id="herb2" name="herbGrowing" value="few">
                             <label for="herb2">Có, ít loại</label>
                         </div>
                         <div class="radio-item">
-                            <input type="radio" id="herb3" name="herbGrowing" value="planning" required>
+                            <input type="radio" id="herb3" name="herbGrowing" value="planning">
                             <label for="herb3">Có kế hoạch trồng</label>
                         </div>
                         <div class="radio-item">
-                            <input type="radio" id="herb4" name="herbGrowing" value="not_interested" required>
+                            <input type="radio" id="herb4" name="herbGrowing" value="not_interested">
                             <label for="herb4">Không quan tâm</label>
                         </div>
                     </div>
@@ -590,23 +578,23 @@
                     <label>Mục đích trồng tre/dược liệu chính <span class="required">*</span></label>
                     <div class="radio-group">
                         <div class="radio-item">
-                            <input type="radio" id="purpose1" name="growingPurpose" value="economic" required>
+                            <input type="radio" id="purpose1" name="growingPurpose" value="economic">
                             <label for="purpose1">Kinh tế</label>
                         </div>
                         <div class="radio-item">
-                            <input type="radio" id="purpose2" name="growingPurpose" value="family" required>
+                            <input type="radio" id="purpose2" name="growingPurpose" value="family">
                             <label for="purpose2">Sử dụng gia đình</label>
                         </div>
                         <div class="radio-item">
-                            <input type="radio" id="purpose3" name="growingPurpose" value="environment" required>
+                            <input type="radio" id="purpose3" name="growingPurpose" value="environment">
                             <label for="purpose3">Bảo vệ môi trường</label>
                         </div>
                         <div class="radio-item">
-                            <input type="radio" id="purpose4" name="growingPurpose" value="hobby" required>
+                            <input type="radio" id="purpose4" name="growingPurpose" value="hobby">
                             <label for="purpose4">Sở thích</label>
                         </div>
                         <div class="radio-item">
-                            <input type="radio" id="purpose5" name="growingPurpose" value="other" required>
+                            <input type="radio" id="purpose5" name="growingPurpose" value="other">
                             <label for="purpose5">Khác</label>
                         </div>
                     </div>
@@ -620,7 +608,7 @@
 
                 <div class="form-group">
                     <label for="wellnessInterest">Bạn có quan tâm đến sản phẩm wellness từ thiên nhiên không? <span class="required">*</span></label>
-                    <select id="wellnessInterest" name="wellnessInterest" required>
+                    <select id="wellnessInterest" name="wellnessInterest">
                         <option value="">Chọn mức độ quan tâm</option>
                         <option value="5">Rất quan tâm</option>
                         <option value="4">Quan tâm</option>
@@ -664,19 +652,19 @@
                     <label>Bạn có sẵn sàng trả giá cao hơn cho sản phẩm wellness hữu cơ không? <span class="required">*</span></label>
                     <div class="radio-group">
                         <div class="radio-item">
-                            <input type="radio" id="price1" name="pricePremium" value="50+" required>
+                            <input type="radio" id="price1" name="pricePremium" value="50+">
                             <label for="price1">Có, cao hơn 50%</label>
                         </div>
                         <div class="radio-item">
-                            <input type="radio" id="price2" name="pricePremium" value="20-30" required>
+                            <input type="radio" id="price2" name="pricePremium" value="20-30">
                             <label for="price2">Có, cao hơn 20-30%</label>
                         </div>
                         <div class="radio-item">
-                            <input type="radio" id="price3" name="pricePremium" value="10-20" required>
+                            <input type="radio" id="price3" name="pricePremium" value="10-20">
                             <label for="price3">Có, cao hơn 10-20%</label>
                         </div>
                         <div class="radio-item">
-                            <input type="radio" id="price4" name="pricePremium" value="no" required>
+                            <input type="radio" id="price4" name="pricePremium" value="no">
                             <label for="price4">Không</label>
                         </div>
                     </div>
@@ -686,23 +674,23 @@
                     <label>Kênh mua sản phẩm wellness ưa thích <span class="required">*</span></label>
                     <div class="radio-group">
                         <div class="radio-item">
-                            <input type="radio" id="channel1" name="purchaseChannel" value="online" required>
+                            <input type="radio" id="channel1" name="purchaseChannel" value="online">
                             <label for="channel1">Online</label>
                         </div>
                         <div class="radio-item">
-                            <input type="radio" id="channel2" name="purchaseChannel" value="specialty_store" required>
+                            <input type="radio" id="channel2" name="purchaseChannel" value="specialty_store">
                             <label for="channel2">Cửa hàng chuyên dụng</label>
                         </div>
                         <div class="radio-item">
-                            <input type="radio" id="channel3" name="purchaseChannel" value="supermarket" required>
+                            <input type="radio" id="channel3" name="purchaseChannel" value="supermarket">
                             <label for="channel3">Siêu thị</label>
                         </div>
                         <div class="radio-item">
-                            <input type="radio" id="channel4" name="purchaseChannel" value="direct_farmer" required>
+                            <input type="radio" id="channel4" name="purchaseChannel" value="direct_farmer">
                             <label for="channel4">Trực tiếp từ nông dân</label>
                         </div>
                         <div class="radio-item">
-                            <input type="radio" id="channel5" name="purchaseChannel" value="other" required>
+                            <input type="radio" id="channel5" name="purchaseChannel" value="other">
                             <label for="channel5">Khác</label>
                         </div>
                     </div>
@@ -718,19 +706,19 @@
                     <label>Bạn có biết về tiêu chuẩn GACP không? <span class="required">*</span></label>
                     <div class="radio-group">
                         <div class="radio-item">
-                            <input type="radio" id="gacp1" name="gacpKnowledge" value="know_apply" required>
+                            <input type="radio" id="gacp1" name="gacpKnowledge" value="know_apply">
                             <label for="gacp1">Biết rõ và áp dụng</label>
                         </div>
                         <div class="radio-item">
-                            <input type="radio" id="gacp2" name="gacpKnowledge" value="know_not_apply" required>
+                            <input type="radio" id="gacp2" name="gacpKnowledge" value="know_not_apply">
                             <label for="gacp2">Biết nhưng chưa áp dụng</label>
                         </div>
                         <div class="radio-item">
-                            <input type="radio" id="gacp3" name="gacpKnowledge" value="heard" required>
+                            <input type="radio" id="gacp3" name="gacpKnowledge" value="heard">
                             <label for="gacp3">Nghe qua nhưng chưa hiểu rõ</label>
                         </div>
                         <div class="radio-item">
-                            <input type="radio" id="gacp4" name="gacpKnowledge" value="unknown" required>
+                            <input type="radio" id="gacp4" name="gacpKnowledge" value="unknown">
                             <label for="gacp4">Chưa biết</label>
                         </div>
                     </div>
@@ -738,7 +726,7 @@
 
                 <div class="form-group">
                     <label for="gacpInterest">Bạn có quan tâm đến chứng nhận hữu cơ/GACP không? <span class="required">*</span></label>
-                    <select id="gacpInterest" name="gacpInterest" required>
+                    <select id="gacpInterest" name="gacpInterest">
                         <option value="">Chọn mức độ quan tâm</option>
                         <option value="5">Rất quan tâm</option>
                         <option value="4">Quan tâm</option>
@@ -752,23 +740,23 @@
                     <label>Rào cản lớn nhất để áp dụng GACP? <span class="required">*</span></label>
                     <div class="radio-group">
                         <div class="radio-item">
-                            <input type="radio" id="barrier1" name="gacpBarrier" value="high_cost" required>
+                            <input type="radio" id="barrier1" name="gacpBarrier" value="high_cost">
                             <label for="barrier1">Chi phí cao</label>
                         </div>
                         <div class="radio-item">
-                            <input type="radio" id="barrier2" name="gacpBarrier" value="lack_knowledge" required>
+                            <input type="radio" id="barrier2" name="gacpBarrier" value="lack_knowledge">
                             <label for="barrier2">Thiếu kiến thức</label>
                         </div>
                         <div class="radio-item">
-                            <input type="radio" id="barrier3" name="gacpBarrier" value="complex_procedure" required>
+                            <input type="radio" id="barrier3" name="gacpBarrier" value="complex_procedure">
                             <label for="barrier3">Thủ tục phức tạp</label>
                         </div>
                         <div class="radio-item">
-                            <input type="radio" id="barrier4" name="gacpBarrier" value="no_benefit" required>
+                            <input type="radio" id="barrier4" name="gacpBarrier" value="no_benefit">
                             <label for="barrier4">Không thấy lợi ích</label>
                         </div>
                         <div class="radio-item">
-                            <input type="radio" id="barrier5" name="gacpBarrier" value="other" required>
+                            <input type="radio" id="barrier5" name="gacpBarrier" value="other">
                             <label for="barrier5">Khác</label>
                         </div>
                     </div>
@@ -778,19 +766,19 @@
                     <label>Bạn có sẵn sàng tham gia khóa đào tạo về GACP không? <span class="required">*</span></label>
                     <div class="radio-group">
                         <div class="radio-item">
-                            <input type="radio" id="training1" name="gacpTraining" value="free" required>
+                            <input type="radio" id="training1" name="gacpTraining" value="free">
                             <label for="training1">Có, miễn phí</label>
                         </div>
                         <div class="radio-item">
-                            <input type="radio" id="training2" name="gacpTraining" value="reasonable_fee" required>
+                            <input type="radio" id="training2" name="gacpTraining" value="reasonable_fee">
                             <label for="training2">Có, trả phí hợp lý</label>
                         </div>
                         <div class="radio-item">
-                            <input type="radio" id="training3" name="gacpTraining" value="with_support" required>
+                            <input type="radio" id="training3" name="gacpTraining" value="with_support">
                             <label for="training3">Có, nếu có hỗ trợ</label>
                         </div>
                         <div class="radio-item">
-                            <input type="radio" id="training4" name="gacpTraining" value="not_interested" required>
+                            <input type="radio" id="training4" name="gacpTraining" value="not_interested">
                             <label for="training4">Không quan tâm</label>
                         </div>
                     </div>
@@ -843,8 +831,10 @@
         // Biến theo dõi nhóm đã chọn
         let selectedGroup = null;
 
-        // Hàm chọn nhóm
+        // Hàm chọn nhóm - ĐƠN GIẢN HÓA
         function selectGroup(groupType) {
+            console.log('Selecting group:', groupType);
+            
             // Cập nhật radio button
             const radioButton = document.querySelector(`input[value="${groupType}"]`);
             if (radioButton) {
@@ -858,18 +848,24 @@
             showGroup(groupType);
         }
 
-        // Hiển thị/ẩn nhóm câu hỏi
+        // Hiển thị/ẩn nhóm câu hỏi - ĐƠN GIẢN HÓA
         function showGroup(groupType) {
+            console.log('Showing group:', groupType);
+            
             // Ẩn tất cả sections
-            document.getElementById('agricultureSection').classList.add('hidden');
-            document.getElementById('bambooSection').classList.add('hidden');
-            document.getElementById('wellnessSection').classList.add('hidden');
-            document.getElementById('gacpSection').classList.add('hidden');
+            const sections = ['agricultureSection', 'bambooSection', 'wellnessSection', 'gacpSection'];
+            sections.forEach(sectionId => {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    section.classList.add('hidden');
+                }
+            });
 
             // Hiển thị section được chọn
             const targetSection = document.getElementById(groupType + 'Section');
             if (targetSection) {
                 targetSection.classList.remove('hidden');
+                console.log('Section shown:', groupType + 'Section');
                 
                 // Scroll đến section
                 setTimeout(() => {
@@ -884,183 +880,98 @@
             updateProgress();
         }
 
-        // Cập nhật thanh tiến độ
+        // Cập nhật thanh tiến độ - ĐƠN GIẢN HÓA
         function updateProgress() {
             const form = document.getElementById('ecoFarmForm');
-            let totalFields = form.querySelectorAll('input[required], select[required]').length;
+            const allInputs = form.querySelectorAll('input, select, textarea');
+            let totalFields = 0;
             let filledFields = 0;
 
-            // Đếm các field bắt buộc đã điền
-            form.querySelectorAll('input[required], select[required]').forEach(field => {
+            allInputs.forEach(field => {
+                // Bỏ qua field ẩn
+                if (field.closest('.hidden')) return;
+                
                 if (field.type === 'radio') {
-                    const radioGroup = form.querySelector(`input[name="${field.name}"]:checked`);
-                    if (radioGroup) {
-                        filledFields++;
+                    // Chỉ đếm 1 lần cho mỗi radio group
+                    const isFirstInGroup = field === form.querySelector(`input[name="${field.name}"]`);
+                    if (isFirstInGroup) {
+                        totalFields++;
+                        const checked = form.querySelector(`input[name="${field.name}"]:checked`);
+                        if (checked) filledFields++;
                     }
-                } else if (field.value.trim() !== '') {
-                    filledFields++;
+                } else if (field.type === 'checkbox') {
+                    // Checkbox không bắt buộc
+                } else {
+                    totalFields++;
+                    if (field.value.trim() !== '') filledFields++;
                 }
             });
 
-            // Tính toán và cập nhật progress
             const progress = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
             document.getElementById('progressFill').style.width = progress + '%';
+            console.log(`Progress: ${filledFields}/${totalFields} = ${progress}%`);
         }
 
-        // Hiển thị lỗi
-        function showError(message) {
-            const errorDiv = document.getElementById('errorMessage');
-            errorDiv.textContent = message;
-            errorDiv.style.display = 'block';
-            errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-
-        // Ẩn lỗi
-        function hideError() {
-            document.getElementById('errorMessage').style.display = 'none';
-        }
-
-        // Kiểm tra form hợp lệ
-        function validateForm() {
-            hideError();
-            
-            // Kiểm tra nhóm đã chọn
-            if (!selectedGroup) {
-                showError('Vui lòng chọn lĩnh vực bạn quan tâm!');
-                return false;
-            }
-
-            // Kiểm tra các field bắt buộc
-            const requiredFields = document.querySelectorAll('input[required], select[required]');
-            for (let field of requiredFields) {
-                // Bỏ qua field ẩn
-                if (field.closest('.hidden')) continue;
-                
-                if (field.type === 'radio') {
-                    const radioGroup = document.querySelector(`input[name="${field.name}"]:checked`);
-                    if (!radioGroup) {
-                        showError(`Vui lòng trả lời câu hỏi: ${field.closest('.form-group').querySelector('label').textContent.replace(' *', '')}`);
-                        return false;
-                    }
-                } else if (field.value.trim() === '') {
-                    showError(`Vui lòng điền: ${field.closest('.form-group').querySelector('label').textContent.replace(' *', '')}`);
-                    field.focus();
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
-        // Xử lý submit form
+        // Xử lý submit form - ĐƠN GIẢN HÓA
         document.getElementById('ecoFarmForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            console.log('Form submitted');
             
-            // Kiểm tra form
-            if (!validateForm()) {
-                return;
-            }
-
             // Disable submit button
             const submitBtn = document.getElementById('submitBtn');
             submitBtn.disabled = true;
             submitBtn.textContent = '⏳ Đang gửi...';
             
             try {
+                // Thu thập dữ liệu cơ bản
                 const formData = new FormData(this);
-                const response = {
-                    timestamp: new Date().toLocaleString('vi-VN'),
-                    data: {}
-                };
-
-                // Thu thập dữ liệu form
+                const data = {};
+                
                 for (let [key, value] of formData.entries()) {
-                    if (response.data[key]) {
-                        if (Array.isArray(response.data[key])) {
-                            response.data[key].push(value);
+                    if (data[key]) {
+                        if (Array.isArray(data[key])) {
+                            data[key].push(value);
                         } else {
-                            response.data[key] = [response.data[key], value];
+                            data[key] = [data[key], value];
                         }
                     } else {
-                        response.data[key] = value;
+                        data[key] = value;
                     }
                 }
 
-                // Thu thập checkbox data
-                const checkboxGroups = ['cropTypes', 'bambooTypes', 'herbTypes', 'wellnessProducts'];
-                checkboxGroups.forEach(group => {
-                    const checkboxes = document.querySelectorAll(`input[name="${group}"]:checked`);
-                    response.data[group] = Array.from(checkboxes).map(cb => cb.value);
-                });
+                console.log('Form data:', data);
 
-                // Tạo email content
+                // Tạo email content đơn giản
                 let emailBody = `🌱 ECOFARM SURVEY RESPONSE\n`;
-                emailBody += `Thời gian: ${response.timestamp}\n\n`;
-                emailBody += `📋 THÔNG TIN CHUNG:\n`;
-                emailBody += `- Họ tên: ${response.data.fullName || 'N/A'}\n`;
-                emailBody += `- Email: ${response.data.email || 'N/A'}\n`;
-                emailBody += `- Điện thoại: ${response.data.phone || 'N/A'}\n`;
-                emailBody += `- Địa chỉ: ${response.data.address || 'N/A'}\n`;
-                emailBody += `- Tuổi: ${response.data.age || 'N/A'}\n`;
-                emailBody += `- Nghề nghiệp: ${response.data.occupation || 'N/A'}\n`;
-                emailBody += `- Nhóm quan tâm: ${response.data.interestedGroup || 'N/A'}\n\n`;
-
-                // Thêm dữ liệu theo nhóm
-                if (response.data.interestedGroup === 'agriculture') {
-                    emailBody += `🌾 NÔNG NGHIỆP:\n`;
-                    emailBody += `- Tham gia: ${response.data.agricultureParticipation || 'N/A'}\n`;
-                    emailBody += `- Diện tích: ${response.data.landArea || 'N/A'}\n`;
-                    emailBody += `- Cây trồng: ${response.data.cropTypes ? response.data.cropTypes.join(', ') : 'N/A'}\n`;
-                    emailBody += `- Hữu cơ: ${response.data.organicFarming || 'N/A'}\n`;
-                    emailBody += `- Thách thức: ${response.data.challenges || 'N/A'}\n\n`;
+                emailBody += `Thời gian: ${new Date().toLocaleString('vi-VN')}\n\n`;
+                
+                // Thêm tất cả dữ liệu
+                for (let [key, value] of Object.entries(data)) {
+                    emailBody += `${key}: ${Array.isArray(value) ? value.join(', ') : value}\n`;
                 }
 
-                if (response.data.interestedGroup === 'bamboo') {
-                    emailBody += `🎋 TRE & DƯỢC LIỆU:\n`;
-                    emailBody += `- Trồng tre: ${response.data.bambooGrowing || 'N/A'}\n`;
-                    emailBody += `- Loại tre: ${response.data.bambooTypes ? response.data.bambooTypes.join(', ') : 'N/A'}\n`;
-                    emailBody += `- Trồng dược liệu: ${response.data.herbGrowing || 'N/A'}\n`;
-                    emailBody += `- Loại dược liệu: ${response.data.herbTypes ? response.data.herbTypes.join(', ') : 'N/A'}\n`;
-                    emailBody += `- Mục đích: ${response.data.growingPurpose || 'N/A'}\n\n`;
-                }
-
-                if (response.data.interestedGroup === 'wellness') {
-                    emailBody += `💚 WELLNESS:\n`;
-                    emailBody += `- Quan tâm: ${response.data.wellnessInterest || 'N/A'}\n`;
-                    emailBody += `- Sản phẩm đã dùng: ${response.data.wellnessProducts ? response.data.wellnessProducts.join(', ') : 'N/A'}\n`;
-                    emailBody += `- Trả giá cao: ${response.data.pricePremium || 'N/A'}\n`;
-                    emailBody += `- Kênh mua: ${response.data.purchaseChannel || 'N/A'}\n\n`;
-                }
-
-                if (response.data.interestedGroup === 'gacp') {
-                    emailBody += `🏆 GACP:\n`;
-                    emailBody += `- Biết GACP: ${response.data.gacpKnowledge || 'N/A'}\n`;
-                    emailBody += `- Quan tâm chứng nhận: ${response.data.gacpInterest || 'N/A'}\n`;
-                    emailBody += `- Rào cản: ${response.data.gacpBarrier || 'N/A'}\n`;
-                    emailBody += `- Đào tạo: ${response.data.gacpTraining || 'N/A'}\n\n`;
-                }
-
-                emailBody += `📝 KHÁC:\n`;
-                emailBody += `- Nhận thông tin: ${response.data.receiveInfo || 'N/A'}\n`;
-                emailBody += `- Góp ý: ${response.data.feedback || 'N/A'}\n\n`;
-                emailBody += `---\nDữ liệu JSON:\n${JSON.stringify(response, null, 2)}`;
+                console.log('Email body created');
 
                 // Tạo mailto link
-                const subject = encodeURIComponent(`EcoFarm Survey Response - ${response.data.fullName || 'Anonymous'}`);
+                const subject = encodeURIComponent(`EcoFarm Survey Response - ${data.fullName || 'Anonymous'}`);
                 const body = encodeURIComponent(emailBody);
-                const mailtoLink = `mailto:${ADMIN_EMAIL}?subject=${subject}&body=${body}`;
+                const mailtoLink = `mailto:${tridungvietnam@gmail.com}?subject=${subject}&body=${body}`;
+
+                console.log('Opening mailto link');
 
                 // Mở email client
                 window.location.href = mailtoLink;
 
                 // Hiển thị thông báo thành công
-                document.getElementById('ecoFarmForm').style.display = 'none';
-                document.getElementById('successMessage').style.display = 'block';
-                document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+                setTimeout(() => {
+                    document.getElementById('ecoFarmForm').style.display = 'none';
+                    document.getElementById('successMessage').style.display = 'block';
+                    document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+                }, 1000);
 
             } catch (error) {
                 console.error('Error:', error);
-                showError('Có lỗi xảy ra khi gửi dữ liệu. Vui lòng thử lại!');
+                alert('Có lỗi xảy ra: ' + error.message);
                 
                 // Re-enable submit button
                 submitBtn.disabled = false;
@@ -1068,11 +979,18 @@
             }
         });
 
-        // Cập nhật progress khi có thay đổi
-        document.addEventListener('change', updateProgress);
-        document.addEventListener('input', updateProgress);
+        // Event listeners - ĐƠN GIẢN HÓA
+        document.addEventListener('change', function(e) {
+            console.log('Change event:', e.target.name, e.target.value);
+            updateProgress();
+        });
 
-        // Khởi tạo progress bar
+        document.addEventListener('input', function(e) {
+            updateProgress();
+        });
+
+        // Khởi tạo
+        console.log('Script loaded');
         updateProgress();
     </script>
 </body>
