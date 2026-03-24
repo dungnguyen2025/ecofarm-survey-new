@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>EcoFarm Survey - Khảo sát Nông nghiệp Sinh thái</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .form-content {
+            padding: 30px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 25px;
+            border: 2px solid #e8f5e8;
+            border-radius: 10px;
+            background: #fafffe;
+        }
+
+        .section-title {
+            font-size: 1.5em;
+            color: #2e7d32;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-subtitle {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .required {
+            color: #e53e3e;
+        }
+
+        input[type="text"], 
+        input[type="email"], 
+        input[type="tel"], 
+        select, 
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus, 
+        input[type="email"]:focus, 
+        input[type="tel"]:focus, 
+        select:focus, 
+        textarea:focus {
+            outline: none;
+            border-color: #4CAF50;
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .checkbox-group, .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .checkbox-item, .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            transition: background-color 0.2s;
+            cursor: pointer;
+        }
+
+        .checkbox-item:hover, .radio-item:hover {
+            background-color: #f7fafc;
+        }
+
+        .checkbox-item input, .radio-item input {
+            width: auto;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .checkbox-item label, .radio-item label {
+            cursor: pointer;
+            margin: 0;
+        }
+
+        .group-selector {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+
+        .group-selector h3 {
+            color: #856404;
+            margin-bottom: 15px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .submit-section {
+            text-align: center;
+            padding: 30px;
+            background: #f8f9fa;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(76, 175, 80, 0.3);
+        }
+
+        .btn-submit:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 3px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #45a049);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .success-message {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            color: #155724;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+            display: none;
+        }
+
+        .error-message {
+            background: #f8d7da;
+            border: 2px solid #dc3545;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 10px;
+            }
+            
+            .header {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .form-content {
+                padding: 20px;
+            }
+            
+            .section {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌱 EcoFarm Survey</h1>
+            <p>Khảo sát Nông nghiệp Sinh thái</p>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <div class="error-message" id="errorMessage"></div>
+
+        <div class="success-message" id="successMessage">
+            <h3>🎉 Cảm ơn bạn đã hoàn thành khảo sát!</h3>
+            <p>Dữ liệu của bạn đã được gửi thành công.</p>
+        </div>
+
+        <form id="ecoFarmForm" class="form-content">
+            <!-- THÔNG TIN CHUNG -->
+            <div class="section">
+                <h2 class="section-title">📋 Thông tin chung</h2>
+                <p class="section-subtitle">Vui lòng cung cấp thông tin cơ bản của bạn</p>
+
+                <div class="form-group">
+                    <label for="fullName">Họ và tên <span class="required">*</span></label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Số điện thoại</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Địa chỉ/Khu vực <span class="required">*</span></label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="age">Độ tuổi <span class="required">*</span></label>
+                    <select id="age" name="age" required>
+                        <option value="">Chọn độ tuổi</option>
+                        <option value="18-25">18-25 tuổi</option>
+                        <option value="26-35">26-35 tuổi</option>
+                        <option value="36-45">36-45 tuổi</option>
+                        <option value="46-55">46-55 tuổi</option>
+                        <option value="56-65">56-65 tuổi</option>
+                        <option value="65+">Trên 65 tuổi</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="occupation">Nghề nghiệp chính <span class="required">*</span></label>
+                    <select id="occupation" name="occupation" required>
+                        <option value="">Chọn nghề nghiệp</option>
+                        <option value="farmer">Nông dân</option>
+                        <option value="business">Doanh nhân</option>
+                        <option value="office">Nhân viên văn phòng</option>
+                        <option value="student">Học sinh/Sinh viên</option>
+                        <option value="retired">Hưu trí</option>
+                        <option value="other">Khác</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- CHỌN NHÓM QUAN TÂM -->
+            <div class="group-selector">
+                <h3>🎯 Bạn quan tâm nhất đến lĩnh vực nào?</h3>
+                <p style="margin-bottom: 15px; color: #856404;">Chọn 1 lĩnh vực bạn quan tâm nhất. Bạn sẽ chỉ trả lời câu hỏi về lĩnh vực này.</p>
+                <div class="radio-group">
+                    <div class="radio-item" onclick="selectGroup('agriculture')">
+                        <input type="radio" id="group1" name="interestedGroup" value="agriculture">
+                        <label for="group1">🌾 Nông nghiệp truyền thống</label>
+                    </div>
+                    <div class="radio-item" onclick="selectGroup('bamboo')">
+                        <input type="radio" id="group2" name="interestedGroup" value="bamboo">
+                        <label for="group2">🎋 Tre và cây dược liệu</label>
+                    </div>
+                    <div class="radio-item" onclick="selectGroup('wellness')">
+                        <input type="radio" id="group3" name="interestedGroup" value="wellness">
+                        <label for="group3">💚 Sản phẩm Wellness</label>
+                    </div>
+                    <div class="radio-item" onclick="selectGroup('gacp')">
+                        <input type="radio" id="group4" name="interestedGroup" value="gacp">
+                        <label for="group4">🏆 Chứng nhận GACP</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NHÓM 1: NÔNG NGHIỆP -->
+            <div id="agricultureSection" class="section hidden">
+                <h2 class="section-title">🌾 Nhóm 1: Nông nghiệp</h2>
+                <p class="section-subtitle">Câu hỏi về hoạt động nông nghiệp của bạn</p>
+
+                <div class="form-group">
+                    <label>Bạn có tham gia hoạt động nông nghiệp không? <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="agri1" name="agricultureParticipation" value="main" required>
+                            <label for="agri1">Có, là nghề chính</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="agri2" name="agricultureParticipation" value="side" required>
+                            <label for="agri2">Có, là nghề phụ</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="agri3" name="agricultureParticipation" value="hobby" required>
+                            <label for="agri3">Có, như sở thích</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="agri4" name="agricultureParticipation" value="no" required>
+                            <label for="agri4">Không</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Diện tích đất nông nghiệp bạn đang sử dụng? <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="land1" name="landArea" value="<1000" required>
+                            <label for="land1">Dưới 1000m²</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="land2" name="landArea" value="1000-5000" required>
+                            <label for="land2">1000-5000m²</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="land3" name="landArea" value="5000-10000" required>
+                            <label for="land3">5000m²-1ha</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="land4" name="landArea" value="1-5ha" required>
+                            <label for="land4">1-5ha</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="land5" name="landArea" value=">5ha" required>
+                            <label for="land5">Trên 5ha</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="land6" name="landArea" value="none" required>
+                            <label for="land6">Không có</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Loại cây trồng chính (có thể chọn nhiều)</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="crop1" name="cropTypes" value="rice">
+                            <label for="crop1">Lúa</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="crop2" name="cropTypes" value="vegetables">
+                            <label for="crop2">Rau củ</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="crop3" name="cropTypes" value="fruits">
+                            <label for="crop3">Cây ăn quả</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="crop4" name="cropTypes" value="flowers">
+                            <label for="crop4">Hoa màu</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="crop5" name="cropTypes" value="industrial">
+                            <label for="crop5">Cây công nghiệp</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="crop6" name="cropTypes" value="other">
+                            <label for="crop6">Khác</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Bạn có áp dụng phương pháp nông nghiệp hữu cơ không? <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="organic1" name="organicFarming" value="fully" required>
+                            <label for="organic1">Có, hoàn toàn hữu cơ</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="organic2" name="organicFarming" value="partially" required>
+                            <label for="organic2">Có, một phần</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="organic3" name="organicFarming" value="transitioning" required>
+                            <label for="organic3">Đang chuyển đổi</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="organic4" name="organicFarming" value="no" required>
+                            <label for="organic4">Không</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="organic5" name="organicFarming" value="unclear" required>
+                            <label for="organic5">Chưa hiểu rõ</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="challenges">Thách thức lớn nhất trong nông nghiệp hiện tại?</label>
+                    <textarea id="challenges" name="challenges" placeholder="Chia sẻ những khó khăn bạn gặp phải..."></textarea>
+                </div>
+            </div>
+
+            <!-- NHÓM 2: TRE & DƯỢC LIỆU -->
+            <div id="bambooSection" class="section hidden">
+                <h2 class="section-title">🎋 Nhóm 2: Tre & Dược liệu</h2>
+                <p class="section-subtitle">Câu hỏi về tre và cây dược liệu</p>
+
+                <div class="form-group">
+                    <label>Bạn có trồng tre không? <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="bamboo1" name="bambooGrowing" value="large" required>
+                            <label for="bamboo1">Có, quy mô lớn</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="bamboo2" name="bambooGrowing" value="small" required>
+                            <label for="bamboo2">Có, quy mô nhỏ</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="bamboo3" name="bambooGrowing" value="planning" required>
+                            <label for="bamboo3">Có kế hoạch trồng</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="bamboo4" name="bambooGrowing" value="not_interested" required>
+                            <label for="bamboo4">Không quan tâm</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Loại tre bạn trồng/quan tâm (có thể chọn nhiều)</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="bambooType1" name="bambooTypes" value="luong">
+                            <label for="bambooType1">Tre luồng</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="bambooType2" name="bambooTypes" value="gai">
+                            <label for="bambooType2">Tre gai</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="bambooType3" name="bambooTypes" value="nua">
+                            <label for="bambooType3">Tre nứa</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="bambooType4" name="bambooTypes" value="tamvong">
+                            <label for="bambooType4">Tre tầm vông</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="bambooType5" name="bambooTypes" value="bau">
+                            <label for="bambooType5">Tre bầu</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="bambooType6" name="bambooTypes" value="other">
+                            <label for="bambooType6">Khác</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Bạn có trồng cây dược liệu không? <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="herb1" name="herbGrowing" value="many" required>
+                            <label for="herb1">Có, nhiều loại</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="herb2" name="herbGrowing" value="few" required>
+                            <label for="herb2">Có, ít loại</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="herb3" name="herbGrowing" value="planning" required>
+                            <label for="herb3">Có kế hoạch trồng</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="herb4" name="herbGrowing" value="not_interested" required>
+                            <label for="herb4">Không quan tâm</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Loại dược liệu bạn trồng/quan tâm (có thể chọn nhiều)</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="herbType1" name="herbTypes" value="turmeric">
+                            <label for="herbType1">Nghệ</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="herbType2" name="herbTypes" value="ginger">
+                            <label for="herbType2">Gừng</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="herbType3" name="herbTypes" value="lemongrass">
+                            <label for="herbType3">Sả</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="herbType4" name="herbTypes" value="basil">
+                            <label for="herbType4">Húng quế</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="herbType5" name="herbTypes" value="pennywort">
+                            <label for="herbType5">Rau má</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="herbType6" name="herbTypes" value="xaden">
+                            <label for="herbType6">Cây xạ đen</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="herbType7" name="herbTypes" value="other">
+                            <label for="herbType7">Khác</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Mục đích trồng tre/dược liệu chính <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="purpose1" name="growingPurpose" value="economic" required>
+                            <label for="purpose1">Kinh tế</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="purpose2" name="growingPurpose" value="family" required>
+                            <label for="purpose2">Sử dụng gia đình</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="purpose3" name="growingPurpose" value="environment" required>
+                            <label for="purpose3">Bảo vệ môi trường</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="purpose4" name="growingPurpose" value="hobby" required>
+                            <label for="purpose4">Sở thích</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="purpose5" name="growingPurpose" value="other" required>
+                            <label for="purpose5">Khác</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NHÓM 3: WELLNESS -->
+            <div id="wellnessSection" class="section hidden">
+                <h2 class="section-title">💚 Nhóm 3: Wellness</h2>
+                <p class="section-subtitle">Câu hỏi về sức khỏe và lối sống</p>
+
+                <div class="form-group">
+                    <label for="wellnessInterest">Bạn có quan tâm đến sản phẩm wellness từ thiên nhiên không? <span class="required">*</span></label>
+                    <select id="wellnessInterest" name="wellnessInterest" required>
+                        <option value="">Chọn mức độ quan tâm</option>
+                        <option value="5">Rất quan tâm</option>
+                        <option value="4">Quan tâm</option>
+                        <option value="3">Bình thường</option>
+                        <option value="2">Ít quan tâm</option>
+                        <option value="1">Không quan tâm</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Sản phẩm wellness nào bạn đã/đang sử dụng? (có thể chọn nhiều)</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="wellness1" name="wellnessProducts" value="herbal_tea">
+                            <label for="wellness1">Trà thảo mộc</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="wellness2" name="wellnessProducts" value="essential_oil">
+                            <label for="wellness2">Tinh dầu</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="wellness3" name="wellnessProducts" value="supplements">
+                            <label for="wellness3">Thực phẩm chức năng</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="wellness4" name="wellnessProducts" value="natural_cosmetics">
+                            <label for="wellness4">Mỹ phẩm thiên nhiên</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="wellness5" name="wellnessProducts" value="yoga_meditation">
+                            <label for="wellness5">Yoga/Thiền</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="wellness6" name="wellnessProducts" value="none">
+                            <label for="wellness6">Không sử dụng</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Bạn có sẵn sàng trả giá cao hơn cho sản phẩm wellness hữu cơ không? <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="price1" name="pricePremium" value="50+" required>
+                            <label for="price1">Có, cao hơn 50%</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="price2" name="pricePremium" value="20-30" required>
+                            <label for="price2">Có, cao hơn 20-30%</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="price3" name="pricePremium" value="10-20" required>
+                            <label for="price3">Có, cao hơn 10-20%</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="price4" name="pricePremium" value="no" required>
+                            <label for="price4">Không</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Kênh mua sản phẩm wellness ưa thích <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="channel1" name="purchaseChannel" value="online" required>
+                            <label for="channel1">Online</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="channel2" name="purchaseChannel" value="specialty_store" required>
+                            <label for="channel2">Cửa hàng chuyên dụng</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="channel3" name="purchaseChannel" value="supermarket" required>
+                            <label for="channel3">Siêu thị</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="channel4" name="purchaseChannel" value="direct_farmer" required>
+                            <label for="channel4">Trực tiếp từ nông dân</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="channel5" name="purchaseChannel" value="other" required>
+                            <label for="channel5">Khác</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NHÓM 4: GACP -->
+            <div id="gacpSection" class="section hidden">
+                <h2 class="section-title">🏆 Nhóm 4: GACP</h2>
+                <p class="section-subtitle">Câu hỏi về thực hành nông nghiệp tốt (Good Agricultural and Collection Practices)</p>
+
+                <div class="form-group">
+                    <label>Bạn có biết về tiêu chuẩn GACP không? <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="gacp1" name="gacpKnowledge" value="know_apply" required>
+                            <label for="gacp1">Biết rõ và áp dụng</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="gacp2" name="gacpKnowledge" value="know_not_apply" required>
+                            <label for="gacp2">Biết nhưng chưa áp dụng</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="gacp3" name="gacpKnowledge" value="heard" required>
+                            <label for="gacp3">Nghe qua nhưng chưa hiểu rõ</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="gacp4" name="gacpKnowledge" value="unknown" required>
+                            <label for="gacp4">Chưa biết</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="gacpInterest">Bạn có quan tâm đến chứng nhận hữu cơ/GACP không? <span class="required">*</span></label>
+                    <select id="gacpInterest" name="gacpInterest" required>
+                        <option value="">Chọn mức độ quan tâm</option>
+                        <option value="5">Rất quan tâm</option>
+                        <option value="4">Quan tâm</option>
+                        <option value="3">Bình thường</option>
+                        <option value="2">Ít quan tâm</option>
+                        <option value="1">Không quan tâm</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Rào cản lớn nhất để áp dụng GACP? <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="barrier1" name="gacpBarrier" value="high_cost" required>
+                            <label for="barrier1">Chi phí cao</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="barrier2" name="gacpBarrier" value="lack_knowledge" required>
+                            <label for="barrier2">Thiếu kiến thức</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="barrier3" name="gacpBarrier" value="complex_procedure" required>
+                            <label for="barrier3">Thủ tục phức tạp</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="barrier4" name="gacpBarrier" value="no_benefit" required>
+                            <label for="barrier4">Không thấy lợi ích</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="barrier5" name="gacpBarrier" value="other" required>
+                            <label for="barrier5">Khác</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Bạn có sẵn sàng tham gia khóa đào tạo về GACP không? <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="training1" name="gacpTraining" value="free" required>
+                            <label for="training1">Có, miễn phí</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="training2" name="gacpTraining" value="reasonable_fee" required>
+                            <label for="training2">Có, trả phí hợp lý</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="training3" name="gacpTraining" value="with_support" required>
+                            <label for="training3">Có, nếu có hỗ trợ</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="training4" name="gacpTraining" value="not_interested" required>
+                            <label for="training4">Không quan tâm</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HOÀN THÀNH -->
+            <div class="section">
+                <h2 class="section-title">📝 Hoàn thành</h2>
+                <p class="section-subtitle">Một số câu hỏi tổng quát cuối cùng</p>
+
+                <div class="form-group">
+                    <label>Bạn có muốn nhận thông tin về các chương trình EcoFarm không? <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="info1" name="receiveInfo" value="email" required>
+                            <label for="info1">Có, qua email</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="info2" name="receiveInfo" value="sms" required>
+                            <label for="info2">Có, qua SMS</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="info3" name="receiveInfo" value="both" required>
+                            <label for="info3">Có, qua cả hai</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="info4" name="receiveInfo" value="no" required>
+                            <label for="info4">Không</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="feedback">Góp ý/Đề xuất khác (nếu có)</label>
+                    <textarea id="feedback" name="feedback" placeholder="Chia sẻ ý kiến của bạn về EcoFarm..."></textarea>
+                </div>
+            </div>
+
+            <div class="submit-section">
+                <button type="submit" class="btn-submit" id="submitBtn">📧 Gửi khảo sát</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Email nhận dữ liệu - ĐÃ CÀI SẴN
+        const ADMIN_EMAIL = "tridungvietnam@gmail.com";
+
+        // Biến theo dõi nhóm đã chọn
+        let selectedGroup = null;
+
+        // Hàm chọn nhóm
+        function selectGroup(groupType) {
+            // Cập nhật radio button
+            const radioButton = document.querySelector(`input[value="${groupType}"]`);
+            if (radioButton) {
+                radioButton.checked = true;
+            }
+            
+            // Lưu nhóm đã chọn
+            selectedGroup = groupType;
+            
+            // Hiển thị nhóm tương ứng
+            showGroup(groupType);
+        }
+
+        // Hiển thị/ẩn nhóm câu hỏi
+        function showGroup(groupType) {
+            // Ẩn tất cả sections
+            document.getElementById('agricultureSection').classList.add('hidden');
+            document.getElementById('bambooSection').classList.add('hidden');
+            document.getElementById('wellnessSection').classList.add('hidden');
+            document.getElementById('gacpSection').classList.add('hidden');
+
+            // Hiển thị section được chọn
+            const targetSection = document.getElementById(groupType + 'Section');
+            if (targetSection) {
+                targetSection.classList.remove('hidden');
+                
+                // Scroll đến section
+                setTimeout(() => {
+                    targetSection.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'start' 
+                    });
+                }, 100);
+            }
+            
+            // Cập nhật progress bar
+            updateProgress();
+        }
+
+        // Cập nhật thanh tiến độ
+        function updateProgress() {
+            const form = document.getElementById('ecoFarmForm');
+            let totalFields = form.querySelectorAll('input[required], select[required]').length;
+            let filledFields = 0;
+
+            // Đếm các field bắt buộc đã điền
+            form.querySelectorAll('input[required], select[required]').forEach(field => {
+                if (field.type === 'radio') {
+                    const radioGroup = form.querySelector(`input[name="${field.name}"]:checked`);
+                    if (radioGroup) {
+                        filledFields++;
+                    }
+                } else if (field.value.trim() !== '') {
+                    filledFields++;
+                }
+            });
+
+            // Tính toán và cập nhật progress
+            const progress = totalFields > 0 ? (filledFields / totalFields) * 100 : 0;
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+
+        // Hiển thị lỗi
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        // Ẩn lỗi
+        function hideError() {
+            document.getElementById('errorMessage').style.display = 'none';
+        }
+
+        // Kiểm tra form hợp lệ
+        function validateForm() {
+            hideError();
+            
+            // Kiểm tra nhóm đã chọn
+            if (!selectedGroup) {
+                showError('Vui lòng chọn lĩnh vực bạn quan tâm!');
+                return false;
+            }
+
+            // Kiểm tra các field bắt buộc
+            const requiredFields = document.querySelectorAll('input[required], select[required]');
+            for (let field of requiredFields) {
+                // Bỏ qua field ẩn
+                if (field.closest('.hidden')) continue;
+                
+                if (field.type === 'radio') {
+                    const radioGroup = document.querySelector(`input[name="${field.name}"]:checked`);
+                    if (!radioGroup) {
+                        showError(`Vui lòng trả lời câu hỏi: ${field.closest('.form-group').querySelector('label').textContent.replace(' *', '')}`);
+                        return false;
+                    }
+                } else if (field.value.trim() === '') {
+                    showError(`Vui lòng điền: ${field.closest('.form-group').querySelector('label').textContent.replace(' *', '')}`);
+                    field.focus();
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        // Xử lý submit form
+        document.getElementById('ecoFarmForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Kiểm tra form
+            if (!validateForm()) {
+                return;
+            }
+
+            // Disable submit button
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = '⏳ Đang gửi...';
+            
+            try {
+                const formData = new FormData(this);
+                const response = {
+                    timestamp: new Date().toLocaleString('vi-VN'),
+                    data: {}
+                };
+
+                // Thu thập dữ liệu form
+                for (let [key, value] of formData.entries()) {
+                    if (response.data[key]) {
+                        if (Array.isArray(response.data[key])) {
+                            response.data[key].push(value);
+                        } else {
+                            response.data[key] = [response.data[key], value];
+                        }
+                    } else {
+                        response.data[key] = value;
+                    }
+                }
+
+                // Thu thập checkbox data
+                const checkboxGroups = ['cropTypes', 'bambooTypes', 'herbTypes', 'wellnessProducts'];
+                checkboxGroups.forEach(group => {
+                    const checkboxes = document.querySelectorAll(`input[name="${group}"]:checked`);
+                    response.data[group] = Array.from(checkboxes).map(cb => cb.value);
+                });
+
+                // Tạo email content
+                let emailBody = `🌱 ECOFARM SURVEY RESPONSE\n`;
+                emailBody += `Thời gian: ${response.timestamp}\n\n`;
+                emailBody += `📋 THÔNG TIN CHUNG:\n`;
+                emailBody += `- Họ tên: ${response.data.fullName || 'N/A'}\n`;
+                emailBody += `- Email: ${response.data.email || 'N/A'}\n`;
+                emailBody += `- Điện thoại: ${response.data.phone || 'N/A'}\n`;
+                emailBody += `- Địa chỉ: ${response.data.address || 'N/A'}\n`;
+                emailBody += `- Tuổi: ${response.data.age || 'N/A'}\n`;
+                emailBody += `- Nghề nghiệp: ${response.data.occupation || 'N/A'}\n`;
+                emailBody += `- Nhóm quan tâm: ${response.data.interestedGroup || 'N/A'}\n\n`;
+
+                // Thêm dữ liệu theo nhóm
+                if (response.data.interestedGroup === 'agriculture') {
+                    emailBody += `🌾 NÔNG NGHIỆP:\n`;
+                    emailBody += `- Tham gia: ${response.data.agricultureParticipation || 'N/A'}\n`;
+                    emailBody += `- Diện tích: ${response.data.landArea || 'N/A'}\n`;
+                    emailBody += `- Cây trồng: ${response.data.cropTypes ? response.data.cropTypes.join(', ') : 'N/A'}\n`;
+                    emailBody += `- Hữu cơ: ${response.data.organicFarming || 'N/A'}\n`;
+                    emailBody += `- Thách thức: ${response.data.challenges || 'N/A'}\n\n`;
+                }
+
+                if (response.data.interestedGroup === 'bamboo') {
+                    emailBody += `🎋 TRE & DƯỢC LIỆU:\n`;
+                    emailBody += `- Trồng tre: ${response.data.bambooGrowing || 'N/A'}\n`;
+                    emailBody += `- Loại tre: ${response.data.bambooTypes ? response.data.bambooTypes.join(', ') : 'N/A'}\n`;
+                    emailBody += `- Trồng dược liệu: ${response.data.herbGrowing || 'N/A'}\n`;
+                    emailBody += `- Loại dược liệu: ${response.data.herbTypes ? response.data.herbTypes.join(', ') : 'N/A'}\n`;
+                    emailBody += `- Mục đích: ${response.data.growingPurpose || 'N/A'}\n\n`;
+                }
+
+                if (response.data.interestedGroup === 'wellness') {
+                    emailBody += `💚 WELLNESS:\n`;
+                    emailBody += `- Quan tâm: ${response.data.wellnessInterest || 'N/A'}\n`;
+                    emailBody += `- Sản phẩm đã dùng: ${response.data.wellnessProducts ? response.data.wellnessProducts.join(', ') : 'N/A'}\n`;
+                    emailBody += `- Trả giá cao: ${response.data.pricePremium || 'N/A'}\n`;
+                    emailBody += `- Kênh mua: ${response.data.purchaseChannel || 'N/A'}\n\n`;
+                }
+
+                if (response.data.interestedGroup === 'gacp') {
+                    emailBody += `🏆 GACP:\n`;
+                    emailBody += `- Biết GACP: ${response.data.gacpKnowledge || 'N/A'}\n`;
+                    emailBody += `- Quan tâm chứng nhận: ${response.data.gacpInterest || 'N/A'}\n`;
+                    emailBody += `- Rào cản: ${response.data.gacpBarrier || 'N/A'}\n`;
+                    emailBody += `- Đào tạo: ${response.data.gacpTraining || 'N/A'}\n\n`;
+                }
+
+                emailBody += `📝 KHÁC:\n`;
+                emailBody += `- Nhận thông tin: ${response.data.receiveInfo || 'N/A'}\n`;
+                emailBody += `- Góp ý: ${response.data.feedback || 'N/A'}\n\n`;
+                emailBody += `---\nDữ liệu JSON:\n${JSON.stringify(response, null, 2)}`;
+
+                // Tạo mailto link
+                const subject = encodeURIComponent(`EcoFarm Survey Response - ${response.data.fullName || 'Anonymous'}`);
+                const body = encodeURIComponent(emailBody);
+                const mailtoLink = `mailto:${ADMIN_EMAIL}?subject=${subject}&body=${body}`;
+
+                // Mở email client
+                window.location.href = mailtoLink;
+
+                // Hiển thị thông báo thành công
+                document.getElementById('ecoFarmForm').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+                document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+
+            } catch (error) {
+                console.error('Error:', error);
+                showError('Có lỗi xảy ra khi gửi dữ liệu. Vui lòng thử lại!');
+                
+                // Re-enable submit button
+                submitBtn.disabled = false;
+                submitBtn.textContent = '📧 Gửi khảo sát';
+            }
+        });
+
+        // Cập nhật progress khi có thay đổi
+        document.addEventListener('change', updateProgress);
+        document.addEventListener('input', updateProgress);
+
+        // Khởi tạo progress bar
+        updateProgress();
+    </script>
+</body>
+</html>
